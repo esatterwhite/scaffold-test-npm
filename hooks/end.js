@@ -1,8 +1,8 @@
 'use strict'
 
 const {promisify} = require('util')
-const promisify(spawn) = require('child_process').spawn
-const deps = require('../dependencies')
+const spawn = promisify(require('child_process').spawn)
+const deps = require('./dependencies')
 
 module.exports = onEnd
 
