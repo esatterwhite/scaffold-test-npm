@@ -7,7 +7,6 @@ output-file: .tap
 100: true
 files:
 - test/unit
-- test/integration
 coverage-report:
 - text
 - text-summary
