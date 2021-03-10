@@ -1,0 +1,9 @@
+[
+  "semantic-release"
+, "@answerbook/release-config-npm"
+, "eslint"
+, "eslint-config-logdna"
+, "tap"
+, "tap-parser"
+, "tap-xunit"
+]
