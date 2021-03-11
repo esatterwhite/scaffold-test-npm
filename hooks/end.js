@@ -6,7 +6,14 @@ const deps = require('./dependencies')
 
 module.exports = onEnd
 
-function onEnd({cwd}, debug) {
+/**
+ * This is an example of executing a custom
+ * install step when the generator is done
+ * the end hook is the very last thing to run
+ **/
+
+function onEnd({cwd, install}, debug) {
+  if (install === false) return
   debug('installing package dependencies')
   return spawn('npm', [
     'install'
