@@ -1,7 +1,7 @@
 'use strict'
 
 const {promisify} = require('util')
-const spawn = promisify(require('child_process').spawn)
+const spawn = promisify(require('child_process').exec)
 const deps = require('./dependencies')
 
 module.exports = onEnd
@@ -12,15 +12,10 @@ module.exports = onEnd
  * the end hook is the very last thing to run
  **/
 
-function onEnd({cwd, install}, debug) {
+async function onEnd({cwd, install, ui}, debug) {
   if (install === false) return
-  debug('installing package dependencies')
-  return spawn('npm', [
-    'install'
-  , '--save-dev'
-  , ...deps
-  ], {
-    cwd: cwd
-  , stdio: 'inherit'
-  })
+  ui.start('installing package dependencies')
+  await spawn(`npm install --save-dev ${deps.join(' ')}`, {cwd})
+  debug('install complete')
+  return true
 }
